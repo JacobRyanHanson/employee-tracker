@@ -4,7 +4,7 @@ const {roles, addRole} = require("./queries/roleQueries");
 const {employees, addEmployee, updateEmployeeRole} = require("./queries/employeeQueries");
 
 init();
-
+// Asks the user what they would like to do given the options below.
 function init() {
     inquirer.prompt({
         type: "list",
@@ -21,7 +21,7 @@ function init() {
         ]
     }).then(selectFunction);
 }
-
+// Queries the server accordingly.
 function selectFunction({options}) {
     if (options === "View All Departments") {
         departments(init);

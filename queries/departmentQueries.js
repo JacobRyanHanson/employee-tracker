@@ -1,7 +1,7 @@
 const mysql = require('mysql2');
 const inquirer = require("inquirer");
 require('console.table');
-
+// Obtaines all departments from the server and returns the result.
 function departments(callback) {
     const sql = "SELECT * FROM departments"
     const db = mysql.createConnection(
@@ -19,7 +19,7 @@ function departments(callback) {
         callback();
     });
 }
-
+// Adds a departmend into the database.
 function addDepartment(callback) {
     inquirer.prompt({
         type: "text",

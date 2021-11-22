@@ -1,7 +1,7 @@
 const mysql = require('mysql2');
 const inquirer = require("inquirer");
 require('console.table');
-
+// Outputs the employee's name, title, departmend, salary, and manager.
 function employees(callback) {
     // Here the tables were given variable names to allow for a self join to determine the manager.
     const sql = `SELECT e.id, e.first_name, e.last_name, roles.title, 
@@ -19,7 +19,7 @@ function employees(callback) {
         callback();
     });
 }
-
+// Adds and employee to the database.
 function addEmployee(callback) {
     inquirer.prompt({
         type: "text",
@@ -68,7 +68,7 @@ function addEmployee(callback) {
         });
     });
 }
-
+// Updates and employee's role in the database.
 function updateEmployeeRole(callback) {
     firstAndLastName(update);
 
@@ -107,18 +107,18 @@ function updateEmployeeRole(callback) {
         });
     } 
 }
-
-    function firstAndLastName(callback) {
-        const sql = "SELECT first_name, last_name, id FROM employees";
-        let employeeList;
-        db.promise().query(sql).then(function (result) {
-            employeeList = [...result][0].map(function (element) {
-                return element.first_name + " " + element.last_name + " (" + element.id + ")";
-            });
-            return employeeList;
-        }).then(function () {
-            callback(employeeList);
+// Returns an array of employees for selection above.
+function firstAndLastName(callback) {
+    const sql = "SELECT first_name, last_name, id FROM employees";
+    let employeeList;
+    db.promise().query(sql).then(function (result) {
+        employeeList = [...result][0].map(function (element) {
+            return element.first_name + " " + element.last_name + " (" + element.id + ")";
         });
-    }
+        return employeeList;
+    }).then(function () {
+        callback(employeeList);
+    });
+}
 
-    module.exports = { employees, addEmployee, updateEmployeeRole };
+module.exports = { employees, addEmployee, updateEmployeeRole };

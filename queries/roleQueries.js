@@ -1,7 +1,7 @@
 const mysql = require('mysql2');
 const inquirer = require("inquirer");
 require('console.table');
-
+// Outputs the roles in the database.
 function roles(callback) {
     const sql = `SELECT roles.id, roles.title, roles.salary, departments.name AS department
                 FROM roles
@@ -22,7 +22,7 @@ function roles(callback) {
         callback();
     });
 }
-
+// Adds a role to the database.
 function addRole(callback) {
     inquirer.prompt({
         type: "text",
