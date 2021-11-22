@@ -12,6 +12,14 @@ function employees(callback) {
                 LEFT JOIN departments ON roles.department_id = departments.id
                 LEFT JOIN employees m ON e.manager_id = m.id 
                 `;
+    const db = mysql.createConnection(
+        {
+            host: 'localhost',
+            user: 'root',
+            password: 'YJvGVmwCGu8W4PG',
+            database: 'staff'
+        }
+    );
     db.promise().query(sql).then(function (result) {
         console.table([...result][0]);
     }).then(function () {
