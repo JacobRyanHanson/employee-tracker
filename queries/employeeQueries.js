@@ -118,6 +118,14 @@ function updateEmployeeRole(callback) {
 // Returns an array of employees for selection above.
 function firstAndLastName(callback) {
     const sql = "SELECT first_name, last_name, id FROM employees";
+    const db = mysql.createConnection(
+        {
+            host: 'localhost',
+            user: 'root',
+            password: 'YJvGVmwCGu8W4PG',
+            database: 'staff'
+        }
+    );
     let employeeList;
     db.promise().query(sql).then(function (result) {
         employeeList = [...result][0].map(function (element) {
@@ -125,6 +133,7 @@ function firstAndLastName(callback) {
         });
         return employeeList;
     }).then(function () {
+        db.end();
         callback(employeeList);
     });
 }
