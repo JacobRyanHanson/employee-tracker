@@ -5,8 +5,6 @@ This is an application that allows the user to interact with a database through 
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
-* [License](#license)
-* [Test](#tests)
 * [Credit](#credit)
 
 ## Installation
@@ -27,4 +25,4 @@ Made by Jacob Hanson
 Note: All commands that need to be run from the terminal in the root directory.
 
 ### Walkthrough Video
-
+https://user-images.githubusercontent.com/89164466/142788982-374005e8-358f-4342-a8f9-dee800b6e8fd.mp4
