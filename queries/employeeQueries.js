@@ -54,7 +54,6 @@ function addEmployee(callback) {
                     response.managerId = managerResponse.managerId;
                     return response;
                 }).then(function (response) {
-                    console.log(response)
                     const sql = "INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)";
                     const params = [response.firstName, response.lastName, response.roleId, response.managerId];
                     const db = mysql.createConnection(
